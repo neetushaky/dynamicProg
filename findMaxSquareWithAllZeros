@@ -1,3 +1,5 @@
+Source Coding ninjas
+//question might appear in this format also:Maximum Square Matrix With All Ones(slight change in code).
 //Maximum Square Matrix With All Zeros
 
 Given an NxM matrix that contains only 0s and 1s, find out the size of the maximum square sub-matrix with all 0s. 
