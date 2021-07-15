@@ -1,0 +1,61 @@
+//Maximum Square Matrix With All Zeros
+
+Given an NxM matrix that contains only 0s and 1s, find out the size of the maximum square sub-matrix with all 0s. 
+You need to return the size of the square matrix with all 0s.
+Input Format:
+The first line of the test case contains two integer values, 'N' and 'M', separated by a single space. 
+They represent the 'rows' and 'columns' respectively.
+Second-line onwards, the next 'N' lines or rows represent the ith row values.
+Each of the ith rows constitutes column values separated by a single space (Either 0 or 1).
+//This is the least possible way wecan solve it.
+
+#include<bits/stdc++.h>
+Using namespace std;
+int findMaxSquareWithAllZeros(int **arr, int n, int m)
+{
+    int dp[n][m];
+    int ans=0;
+    for(int i=0;i<n;i++){
+        for(int j=0;j<m;j++){
+            if(i==1 || j==1){
+                dp[i][j]=0;
+            }
+            else if(arr[i][j]==0){
+                dp[i][j]=min(dp[i-1][j-1],min(dp[i][j-1],dp[i-1][j]))+1;
+            }
+            else 
+            {
+                dp[i][j]=0;
+            }
+        ans=max(dp[i][j],ans);
+        }
+    }
+    return ans;
+	
+}
+//main code:
+int main()
+{
+	int **arr, n, m, i, j;
+	cin >> n >> m;
+	arr = new int *[n];
+	
+	for (i = 0; i < n; i++)
+	{
+		arr[i] = new int[m];
+	}
+
+	for (i = 0; i < n; i++)
+	{
+		for (j = 0; j < m; j++)
+		{
+			cin >> arr[i][j];
+		}
+	}
+
+	cout << findMaxSquareWithAllZeros(arr, n, m) << endl;
+
+	delete[] arr;
+
+	return 0;
+}
